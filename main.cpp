@@ -1,23 +1,35 @@
+// Titulo: Recursivo vs Iterativo
+//Serie de Fibonacci
+//
+// Proposito: crear un programa que genere una tabla de datos
+//de los tics que toma la misma tarea, pero con algoritmos 
+//diferentes y ver el más eficiente 
+//
+// Clase: CCC209 – Q3 – 2018
+//
+// Author: Richardson Cárcamo
+
 #include <iostream>
 #include <fstream>
 #include <vector>
 
-using namespace std;
-//ofstream fs("Iterativo_VS_Recursivo.xlsx"); 
-vector<int> Iterativo;;
-vector<int> Recursivo;
+using std::cout;
+using std::endl;
+
+std::vector<int> Iterativo;;
+std::vector<int> Recursivo;
 
 int FibonacciIterativo(int);
 
-int FibbonacciRecursivo(int , int, int);
+int FibonacciRecursivo(int , int, int);
 
 int main(){
-	ofstream fs("Iterativo_VS_Recursivo.xlsx"); 
-	cout << "Iterativo Fibbonacci: " << FibonacciIterativo(1000) << endl;
+	std::ofstream fs("Iterativo_VS_Recursivo.xlsx"); 
+	cout << "Iterativo Fibonacci: " << FibonacciIterativo(1000) << endl;
 	
-	cout << "Recursivo Fibbonacci: " << FibbonacciRecursivo(0, 1, 1000) << endl;
+	cout << "Recursivo Fibonacci: " << FibonacciRecursivo(0, 1, 1000) << endl;
 	
-	fs << "Iterativo,Recursivo" << endl;
+	fs << "Iterativo,Recursivo" << std::endl;
 	int p = Iterativo.size();
 	for(int i = 0; i < Iterativo.size(); i++){
 		fs << Iterativo[i] << "," << Recursivo[i] << endl;
@@ -43,7 +55,7 @@ int FibonacciIterativo(int lim){
 	return a;
 }
 
-int FibbonacciRecursivo(int ant, int des, int lim){
+int FibonacciRecursivo(int ant, int des, int lim){
 	static int ini, fin;
 	ini=clock();
 	
@@ -52,7 +64,7 @@ int FibbonacciRecursivo(int ant, int des, int lim){
 		return ant + des;	
 	}
 	int c = ant + des; 
-	c = FibbonacciRecursivo(des, c, --lim);
+	c = FibonacciRecursivo(des, c, --lim);
 	fin=clock();
 	Recursivo.push_back(fin - ini);
 	return c;
